@@ -48,5 +48,3 @@ def find_data_materials(class_school, subject):
                 for key in element.keys():
                     if key.lower() == subject.lower():
                         return element[key]
-
-
