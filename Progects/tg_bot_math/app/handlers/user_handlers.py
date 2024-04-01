@@ -8,7 +8,7 @@ router = Router()
 
 
 @router.message(Command('start', 'catalog'))
-async def command_start_handler(message: types.Message) -> None:
+async def commands_handler(message: types.Message) -> None:
     await message.answer(text_data['catalog'], reply_markup=main_keyboard())
 
 
@@ -25,6 +25,19 @@ async def training_class_callback_handler(callback: types.CallbackQuery) -> None
     training_class, part, subject = elements[2], elements[3], elements[4]
     await callback.message.edit_text(text_data['output_elements'],
                                      reply_markup=make_keyboard_topic(training_class, part, subject))
+
+
+@router.callback_query(F.data.startswith("back_"))
+async def back_callback_handler(callback: types.CallbackQuery) -> None:
+    callback_data = [i for i in callback.data.split('_')]
+    reverse = '_'.join(callback_data[1:-1])
+    subject = callback_data[-1]
+
+    if reverse == 'main':
+        await callback.message.edit_text(text_data['catalog'], reply_markup=main_keyboard())
+    elif reverse == 'training_class':
+        await callback.message.edit_text(text_data['main'],
+                                         reply_markup=training_class_keyboard(subject))
 
 
 def register_user_handlers(dp: Dispatcher) -> None:
