@@ -1,8 +1,8 @@
 text_data = {
     'start': 'start',
-    'choosing_class': 'choosing_class',
-    'catalog': 'catalog',
-    'output_elements': 'output_elements',
+    'choosing_class': 'Выберите раздел',
+    'catalog': 'Выберите предмет',
+    'output_elements': 'Выберите интересующую вас тему',
     'send_data': 'send_data',
     'information': 'information'
 }
