@@ -44,7 +44,7 @@ async def back_callback_handler(callback: types.CallbackQuery) -> None:
 async def send_data_handler(callback: types.CallbackQuery) -> None:
     elements = callback.data.split('_')
     training_class, part, subject = elements[2], elements[3], elements[4]
-    await callback.message.answer(f'{text_data['send_data']}\n'
+    await callback.message.answer(f'{text_data["send_data"]}\n'
                                   f'{find_data_materials(training_class, subject)[int(elements[5])][1]}')
 
 
