@@ -42,6 +42,8 @@ def make_keyboard_topic(training_class, part, subject) -> InlineKeyboardMarkup:
             text = text.split('—')[1]
         elif 'до ' in text:
             text = text[13:]
-        keyboard.append([InlineKeyboardButton(text=text, callback_data=data[i][1][:5])])
+        keyboard.append(
+            [InlineKeyboardButton(text=text, callback_data=f'send_data_{training_class}_{part}_{subject}_{i}')])
+
     keyboard.append([InlineKeyboardButton(text='Назад', callback_data=f'back_training_class_{subject}')])
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
