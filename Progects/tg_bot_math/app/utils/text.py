@@ -1,3 +1,5 @@
-text_answer = {
-    'command_start': 'command_start',
+text_data = {
+    'main': 'lox',
+    'catalog': 'catalog',
+    'output_elements': 'output_elements'
 }

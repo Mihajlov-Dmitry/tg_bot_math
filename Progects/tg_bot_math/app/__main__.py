@@ -3,6 +3,7 @@ import logging
 import sys
 
 from aiogram import Bot, Dispatcher
+from aiogram.enums import ParseMode
 
 from app.config.config import TOKEN_API
 from app.handlers.user_handlers import register_user_handlers
@@ -13,9 +14,7 @@ def register_handlers(dp: Dispatcher) -> None:
 
 
 async def main() -> None:
-    bot = Bot(token=TOKEN_API)
-
-    #bot = Bot(token=token_api.config.get_secret_value(), parse_mode=ParseMode.HTML)
+    bot = Bot(token=TOKEN_API, parse_mode=ParseMode.HTML)
     dp = Dispatcher()
 
     register_handlers(dp)
